@@ -10,3 +10,6 @@ $routes->get('/testdb', 'TestDb::index');
 
 // Cursos
 $routes->get('cursos', 'CursoController::index');
+
+// Compras
+$routes->post('comprar', 'CompraController::crear');
