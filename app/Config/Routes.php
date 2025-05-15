@@ -7,3 +7,6 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/testdb', 'TestDb::index');
+
+// Cursos
+$routes->get('cursos', 'CursoController::index');

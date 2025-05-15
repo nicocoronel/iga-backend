@@ -27,7 +27,7 @@ class Database extends Config
     public $default = [
         'DSN'       => '',
         'hostname'  => 'localhost',  // o '127.0.0.1'
-        'username'  => 'iga_user',   // según tu docker-compose
+        'username'  => 'root',   // según tu docker-compose
         'password'  => 'iga_pass',
         'database'  => 'iga',
         'DBDriver'  => 'MySQLi',
