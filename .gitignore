@@ -1,0 +1,17 @@
+# Ignorar dependencias de composer
+/vendor/
+
+# Carpetas de escritura de CodeIgniter 4
+/writable/cache/
+/writable/logs/
+/writable/session/
+/writable/uploads/
+
+# Archivo de configuración de entorno local
+.env
+
+# Archivos del sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
