@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use OpenApi\Annotations as OA;
 use App\Models\CursoModel;
 use CodeIgniter\RESTful\ResourceController;
 
