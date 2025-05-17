@@ -1,0 +1,233 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "IGA Cursos API",
+        "description": "Documentación de la API de IGA Cursos",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Servidor local"
+        }
+    ],
+    "paths": {
+        "/compras": {
+            "description": "Rutas para crear y listar compras"
+        },
+        "/cursos": {
+            "description": "Rutas para crear y listar cursos",
+            "get": {
+                "tags": [
+                    "Cursos"
+                ],
+                "summary": "Obtener todos los cursos",
+                "operationId": "7b22207b16a04331fdb834c377eebb32",
+                "responses": {
+                    "200": {
+                        "description": "Listado de cursos disponibles",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "nombre": {
+                                                "type": "string",
+                                                "example": "Pastelería Profesional"
+                                            },
+                                            "descripcion": {
+                                                "type": "string",
+                                                "example": "Aprendé técnicas de pastelería desde lo básico hasta lo avanzado."
+                                            },
+                                            "precio": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "example": 25
+                                            },
+                                            "detalle": {
+                                                "type": "string",
+                                                "example": "Incluye módulos de tortas, masas, cremas, decoración y más."
+                                            },
+                                            "imagen": {
+                                                "type": "string",
+                                                "example": "pasteleria.jpg"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/comprar": {
+            "post": {
+                "tags": [
+                    "Compras"
+                ],
+                "summary": "Registrar una nueva compra",
+                "operationId": "b0dd9e4f4d79dde55d0a22653f3fc401",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "email",
+                                    "telefono",
+                                    "curso_id"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Nicolas Coronel"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "nico@example.com"
+                                    },
+                                    "telefono": {
+                                        "type": "string",
+                                        "example": "3518459621"
+                                    },
+                                    "curso_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Compra registrada correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "mensaje": {
+                                            "type": "string",
+                                            "example": "Compra registrada correctamente"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                }
+            }
+        },
+        "/compras/cliente": {
+            "get": {
+                "tags": [
+                    "Compras"
+                ],
+                "summary": "Obtener compras por cliente (email)",
+                "operationId": "a98f6022e1b733d63d77573396a1cd3c",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Correo del cliente",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "email",
+                            "example": "nico@gmail.com"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Listado de compras del cliente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "nombre": {
+                                                "type": "string",
+                                                "example": "Panadería Artesanal"
+                                            },
+                                            "precio": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "example": 22
+                                            },
+                                            "fecha_compra": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "example": "2025-05-15 16:11:08"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/compras/admin": {
+            "get": {
+                "tags": [
+                    "Compras"
+                ],
+                "summary": "Obtener resumen de compras por curso",
+                "operationId": "ed527444ba624fb80e02e9844b2f76fd",
+                "responses": {
+                    "200": {
+                        "description": "Resumen de compras agrupadas por curso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "nombre": {
+                                                "type": "string",
+                                                "example": "Cocina Vegana"
+                                            },
+                                            "cantidad": {
+                                                "type": "integer",
+                                                "example": 2
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Compras",
+            "description": "Operaciones relacionadas con compras de cursos"
+        },
+        {
+            "name": "Cursos",
+            "description": "Operaciones relacionadas con cursos"
+        }
+    ]
+}
