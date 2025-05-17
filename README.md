@@ -27,29 +27,38 @@ cd iga-backend
 composer install
 cp env .env
 php spark serve
+```
 
 Accedé al backend en: http://localhost:8080
 
 # 🧪 Base de Datos
 
+```bash
 database.default.hostname = localhost
 database.default.database = iga
 database.default.username = root
 database.default.password = iga_pass
+```
 
 # Migraciones
 
+```bash
 php spark migrate
+```
 
 # 📚 Documentación de la API (Swagger)
 
 ## Generá la documentación con:
 
+```bash
 php spark swagger:generate
+```
 
 ## Accedé a la documentación en: 
 
+```bash
 http://localhost:8080/api/v1/docs/ui
+```
 
 # 📁 Estructura de carpetas importante
 
