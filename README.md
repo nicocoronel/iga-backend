@@ -40,11 +40,54 @@ database.default.username = root
 database.default.password = iga_pass
 ```
 
-# Migraciones
+## Migraciones
 
 ```bash
 php spark migrate
 ```
+
+# 🐳 Cómo levantar la Base de Datos con Docker
+
+Este proyecto utiliza un contenedor Docker de MySQL para el entorno de base de datos.
+
+## ⚙️ Requisitos
+
+Tener Docker y Docker Compose instalados.
+
+## 🚀 Iniciar la base de datos
+
+Asegurate de tener el archivo docker-compose.yml en la raíz del proyecto.
+
+En la terminal, ejecutá:
+
+```bash
+docker-compose up -d
+```
+Esto iniciará el contenedor de MySQL con la base de datos, usuarios y tablas ya configurados.
+
+## 📦 Puerto MySQL: 3305
+
+## 📁 Volumen: se utiliza un volumen externo que ya contiene los datos de la base.
+
+## 🔐 Credenciales por defecto (según el .env del backend):
+
+Usuario: root
+
+Contraseña: iga_pass
+
+Base de datos: iga
+
+Podés revisar o modificar estos valores en el archivo .env del backend.
+
+## ⏹️ Detener la base de datos
+
+Para detener el contenedor:
+
+```bash
+docker-compose down
+```
+
+## ⚠️ El volumen de datos no se borra con este comando porque está marcado como externo.
 
 # 📚 Documentación de la API (Swagger)
 
